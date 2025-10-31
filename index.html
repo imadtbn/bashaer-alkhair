@@ -149,9 +149,9 @@
 
         /* القسم الرئيسي */
         .hero {
-            background: linear-gradient(rgba(46, 204, 113, 0.8), rgba(52, 152, 219, 0.7)),
-                url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
-            height: 100vh;
+            background: linear-gradient(rgba(241, 243, 242, 0.2), rgba(52, 152, 219, 0.4)),
+                url('images/cover.jpg') center/cover;
+            height: 75vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -369,22 +369,41 @@
         }
 
         .modal-list {
-            list-style-type: none;
-            padding-right: 1rem;
+            list-style: none;
+            padding-right: 0;
+            margin: 1rem 0;
+            text-align: right;
         }
 
         .modal-list li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.7rem;
             position: relative;
-            padding-right: 1.5rem;
+            padding-right: 1.8rem;
+            line-height: 1.7;
+            color: var(--text-color);
+            font-size: 1rem;
         }
 
-        .modal-list li:before {
-            content: "•";
+        .modal-list li::before {
+            content: "▹";
             color: var(--secondary-color);
             font-weight: bold;
             position: absolute;
             right: 0;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        /* ضبط العرض على الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .modal-list li {
+                font-size: 0.95rem;
+                padding-right: 1.5rem;
+            }
+
+            .modal-list li::before {
+                font-size: 1rem;
+            }
         }
 
         /* معرض الصور */
@@ -499,9 +518,9 @@
     <style>
         /* تحسينات القسم الرئيسي */
         .hero {
-            background: linear-gradient(rgba(46, 204, 113, 0.85), rgba(52, 152, 219, 0.8)),
-                url('https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
-            height: 100vh;
+            background: linear-gradient(rgba(241, 243, 242, 0.2), rgba(52, 152, 219, 0.4)),
+                url('images/covert.jpg') center/cover;
+            height: 75vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -761,8 +780,8 @@
         }
     </style>
 
-    <!-- تنسيقات قسم المنشورات -->
-    <style>
+ <!-- تنسيقات قسم المنشورات -->
+       <style>
         /* تنسيقات قسم المنشورات */
         #publications {
             background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
@@ -1284,6 +1303,7 @@
     </style>
 
     <!-- نافذة التبرعات -->
+
     <style>
         /* تنسيقات قسم انضم إلينا */
         #contact {
@@ -2209,10 +2229,13 @@
     </section>
 
     <!-- النوافذ المنبثقة -->
+    <!-- رؤية -->
     <div id="vision-modal" class="modal">
         <div class="modal-content">
             <button class="close-button">&times;</button>
             <h3 class="modal-title">رؤية جمعية بشائر الخير</h3>
+            <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=1350&q=80"
+                alt="صورة الرسالة" class="modal-image">
             <p class="modal-text">تسعى جمعية بشائر الخير إلى تحقيق رؤية مجتمعية متكاملة:</p>
             <ul class="modal-list">
                 <li>مجتمع متكافل متعاون</li>
@@ -2227,10 +2250,13 @@
         </div>
     </div>
 
+    <!-- رسالة -->
     <div id="mission-modal" class="modal">
         <div class="modal-content">
             <button class="close-button">&times;</button>
             <h3 class="modal-title">رسالة جمعية بشائر الخير</h3>
+            <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=1350&q=80"
+                alt="صورة الرسالة" class="modal-image">
             <p class="modal-text">تلتزم جمعية بشائر الخير بتنفيذ رسالتها من خلال:</p>
             <ul class="modal-list">
                 <li><strong>المساعدات الإنسانية:</strong> تقديم الدعم المادي والعيني للمحتاجين</li>
@@ -2244,10 +2270,13 @@
         </div>
     </div>
 
+    <!-- قيم -->
     <div id="values-modal" class="modal">
         <div class="modal-content">
             <button class="close-button">&times;</button>
             <h3 class="modal-title">قيم جمعية بشائر الخير</h3>
+            <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=1350&q=80"
+                alt="صورة الرسالة" class="modal-image">
             <p class="modal-text">تستند جمعية بشائر الخير إلى مجموعة من القيم الأساسية التي توجه عملها:</p>
             <ul class="modal-list">
                 <li><strong>التطوع:</strong> العمل التطوعي كأساس للخدمة المجتمعية</li>
@@ -2262,6 +2291,85 @@
             <p class="modal-text">تسعى الجمعية إلى ترسيخ هذه القيم في جميع أنشطتها وبرامجها.</p>
         </div>
     </div>
+
+    <style>
+        /* صورة داخل النوافذ المنبثقة */
+        .modal-image {
+            width: 50%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-image:hover {
+            transform: scale(1.03);
+        }
+
+        /* تحسين تنسيق محتوى المنبثقة */
+        .modal-content {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 700px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .modal-text {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* زر الإغلاق */
+        .close-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent-color);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .close-button:hover {
+            background: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        /* خلفية النوافذ المنبثقة */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+    </style>
 
     <!-- قسم المنشورات والنداءات -->
     <section class="section" id="publications">
@@ -2436,6 +2544,8 @@
         </div>
     </div>
 
+    <!-- النوافذ المنبثقة لقسم الأنشطة -->
+    <!-- حملات النظافة -->
     <div id="cleanup-modal" class="modal">
         <div class="modal-content">
             <button class="close-button">&times;</button>
@@ -2452,6 +2562,7 @@
         </div>
     </div>
 
+    <!-- الإغاثة الرمضانية -->
     <div id="ramadan-modal" class="modal">
         <div class="modal-content">
             <button class="close-button">&times;</button>
@@ -2468,6 +2579,7 @@
         </div>
     </div>
 
+    <!-- إفطار الصائمين -->
     <div id="iftar-modal" class="modal">
         <div class="modal-content">
             <button class="close-button">&times;</button>
@@ -3288,8 +3400,6 @@
     </div>
 
     <!-- نافذة التبرعات -->
-
-
     <div id="donation-modal" class="modal">
         <div class="modal-content">
             <button class="close-button">&times;</button>
@@ -3373,8 +3483,6 @@
         </div>
     </div>
 
-
-
     <!-- الفوتر -->
     <footer class="footer">
         <div class="footer-content">
@@ -3388,6 +3496,9 @@
                 <p><a href="#about" style="color: white;">من نحن</a></p>
                 <p><a href="#activities" style="color: white;">الأنشطة</a></p>
                 <p><a href="#contact" style="color: white;">اتصل بنا</a></p>
+                <p><a href="https://imadtbn.github.io/dz_portal/" target="_blank" style="color: white;">
+                        البوابة الجزائرية للخدمات الرقمية
+                    </a></p>
             </div>
             <div class="footer-section">
                 <h3>تابعنا على</h3>
