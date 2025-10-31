@@ -780,530 +780,9 @@
         }
     </style>
 
- <!-- تنسيقات قسم المنشورات -->
-       <style>
-        /* تنسيقات قسم المنشورات */
-        #publications {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
-            padding: 5rem 2rem;
-        }
 
-        .publication-filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            background: var(--white);
-            color: var(--text-color);
-            border: 2px solid var(--primary-color);
-            padding: 12px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 0.95rem;
-        }
-
-        .filter-btn:hover {
-            background: var(--primary-color);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-        }
-
-        .filter-btn.active {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .publications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .publication-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(46, 204, 113, 0.1);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .publication-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .publication-image {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .publication-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .publication-card:hover .publication-image img {
-            transform: scale(1.1);
-        }
-
-        .publication-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: white;
-            z-index: 2;
-        }
-
-        .badge-donation {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-        }
-
-        .badge-volunteer {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-        }
-
-        .badge-event {
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
-        }
-
-        .badge-report {
-            background: linear-gradient(135deg, #f39c12, #e67e22);
-        }
-
-        .publication-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1.5rem;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .publication-card:hover .publication-overlay {
-            opacity: 1;
-        }
-
-        .publication-content {
-            padding: 1.5rem;
-        }
-
-        .publication-title {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-
-        .publication-excerpt {
-            color: var(--text-color);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .publication-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .publication-date {
-            color: #666;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .publication-stats-mini {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .stat-mini {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            color: #666;
-            font-size: 0.8rem;
-        }
-
-        .stat-mini i {
-            color: var(--secondary-color);
-        }
-
-        .publication-progress {
-            margin-top: 1rem;
-        }
-
-        .progress-bar {
-            background: #ecf0f1;
-            border-radius: 10px;
-            height: 8px;
-            overflow: hidden;
-            margin-bottom: 0.5rem;
-        }
-
-        .progress-fill {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.5s ease;
-        }
-
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        .publication-actions {
-            display: flex;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .publication-action-btn {
-            flex: 1;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .action-primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .action-primary:hover {
-            background: #27ae60;
-            transform: translateY(-2px);
-        }
-
-        .action-secondary {
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .action-secondary:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* تنسيقات نافذة المنشور المنبثقة */
-        .publication-modal-content {
-            max-width: 900px;
-            padding: 0;
-        }
-
-        .publication-modal-header {
-            padding: 2rem 2rem 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            position: relative;
-        }
-
-        .publication-modal-header .publication-badge {
-            position: static;
-            display: inline-block;
-            margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .publication-modal-header .modal-title {
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-modal-header .modal-subtitle {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
-        }
-
-        .publication-modal-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            padding: 2rem;
-            max-height: 60vh;
-            overflow-y: auto;
-        }
-
-        .publication-image {
-            border-radius: 15px;
-            overflow: hidden;
-            height: 300px;
-        }
-
-        .publication-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .publication-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .publication-stats {
-            display: flex;
-            gap: 2rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .stat-item i {
-            color: var(--secondary-color);
-        }
-
-        .publication-description h4,
-        .publication-goal h4,
-        .publication-details h4 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .publication-description p {
-            line-height: 1.8;
-            color: var(--text-color);
-        }
-
-        .goal-progress {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-right: 4px solid var(--primary-color);
-        }
-
-        .goal-text {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .details-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .detail-item i {
-            color: var(--primary-color);
-            width: 20px;
-            text-align: center;
-        }
-
-        .publication-modal-actions {
-            display: flex;
-            gap: 1rem;
-            padding: 0 2rem 2rem;
-            flex-wrap: wrap;
-        }
-
-        .publication-btn {
-            flex: 1;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            font-size: 1rem;
-            min-width: 160px;
-        }
-
-        .publication-btn.primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .publication-btn.primary:hover {
-            background: #27ae60;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-        }
-
-        .publication-btn.secondary {
-            background: var(--secondary-color);
-            color: white;
-        }
-
-        .publication-btn.secondary:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-        }
-
-        .publication-btn.outline {
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .publication-btn.outline:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* زر تحميل المزيد */
-        .load-more {
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        .load-more-btn {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--white);
-            border: none;
-            padding: 15px 40px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-        }
-
-        .load-more-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
-        }
-
-        /* التجاوب مع الجوال */
-        @media (max-width: 768px) {
-            .publications-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .publication-filters {
-                gap: 0.5rem;
-            }
-
-            .filter-btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-
-            .publication-modal-body {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 1.5rem;
-            }
-
-            .publication-image {
-                height: 250px;
-            }
-
-            .publication-modal-actions {
-                flex-direction: column;
-            }
-
-            .publication-btn {
-                width: 100%;
-            }
-
-            .details-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #publications {
-                padding: 3rem 1rem;
-            }
-
-            .publication-filters {
-                justify-content: flex-start;
-                overflow-x: auto;
-                padding-bottom: 1rem;
-            }
-
-            .publication-card {
-                margin: 0 0.5rem;
-            }
-        }
-    </style>
 
     <!-- نافذة التبرعات -->
-
     <style>
         /* تنسيقات قسم انضم إلينا */
         #contact {
@@ -2371,6 +1850,7 @@
         }
     </style>
 
+
     <!-- قسم المنشورات والنداءات -->
     <section class="section" id="publications">
         <h2 class="section-title">منشورات ونداءات الجمعية</h2>
@@ -2473,14 +1953,1199 @@
         </div>
     </div>
 
+    <!-- نافذة المشاركة -->
+    <div id="share-modal" class="modal">
+        <div class="modal-content share-modal-content">
+            <button class="close-button">&times;</button>
+            <div class="share-modal-header">
+                <h3 class="modal-title"><i class="fas fa-share-alt"></i> مشاركة الحملة</h3>
+                <p class="modal-subtitle">انشر الخير وساعد في نشر الحملة</p>
+            </div>
+            <div class="share-modal-body">
+                <div class="share-options">
+                    <button class="share-option facebook" data-platform="facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>فيسبوك</span>
+                    </button>
+                    <button class="share-option twitter" data-platform="twitter">
+                        <i class="fab fa-twitter"></i>
+                        <span>تويتر</span>
+                    </button>
+                    <button class="share-option whatsapp" data-platform="whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>واتساب</span>
+                    </button>
+                    <button class="share-option link" data-platform="link">
+                        <i class="fas fa-link"></i>
+                        <span>نسخ الرابط</span>
+                    </button>
+                </div>
+                <div class="share-text">
+                    <textarea id="share-textarea" readonly>انضم إلى حملتنا الخيرية وساعد في دعم المحتاجين</textarea>
+                    <button class="copy-btn" id="copy-share-text">
+                        <i class="fas fa-copy"></i> نسخ النص
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* تنسيقات قسم المنشورات */
+        #publications {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
+            padding: 5rem 2rem;
+        }
+
+        .publication-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            color: var(--text-color);
+            border: 2px solid var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .publication-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(46, 204, 113, 0.1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .publication-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .publication-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .publication-card:hover .publication-image img {
+            transform: scale(1.1);
+        }
+
+        .publication-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+            z-index: 2;
+        }
+
+        .badge-donation {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .badge-volunteer {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+
+        .badge-event {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+
+        .badge-report {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+
+        .publication-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .publication-card:hover .publication-overlay {
+            opacity: 1;
+        }
+
+        .publication-content {
+            padding: 1.5rem;
+        }
+
+        .publication-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .publication-excerpt {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .publication-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .publication-date {
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .publication-stats-mini {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .stat-mini {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .stat-mini i {
+            color: var(--secondary-color);
+        }
+
+        .publication-progress {
+            margin-top: 1rem;
+        }
+
+        .progress-bar {
+            background: #ecf0f1;
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-fill {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .publication-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .publication-action-btn {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .action-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .action-primary:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .action-secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .action-secondary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .action-share {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .action-share:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* تنسيقات نافذة المنشور المنبثقة */
+        .publication-modal-content {
+            max-width: 900px;
+            padding: 0;
+        }
+
+        .publication-modal-header {
+            padding: 2rem 2rem 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
+        }
+
+        .publication-modal-header .publication-badge {
+            position: static;
+            display: inline-block;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .publication-modal-header .modal-title {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-modal-header .modal-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+
+        .publication-modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .publication-image {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .publication-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .publication-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .publication-stats {
+            display: flex;
+            gap: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .stat-item i {
+            color: var(--secondary-color);
+        }
+
+        .publication-description h4,
+        .publication-goal h4,
+        .publication-details h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .publication-description p {
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .goal-progress {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-right: 4px solid var(--primary-color);
+        }
+
+        .goal-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .detail-item i {
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        .publication-modal-actions {
+            display: flex;
+            gap: 1rem;
+            padding: 0 2rem 2rem;
+            flex-wrap: wrap;
+        }
+
+        .publication-btn {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            font-size: 1rem;
+            min-width: 160px;
+        }
+
+        .publication-btn.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .publication-btn.primary:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .publication-btn.secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .publication-btn.secondary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .publication-btn.outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .publication-btn.outline:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* تنسيقات نافذة المشاركة */
+        .share-modal-content {
+            max-width: 500px;
+            padding: 0;
+        }
+
+        .share-modal-header {
+            padding: 2rem 2rem 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .share-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.5rem;
+            border: none;
+            border-radius: 15px;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .share-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-option.facebook:hover {
+            background: #1877f2;
+            color: white;
+        }
+
+        .share-option.twitter:hover {
+            background: #1da1f2;
+            color: white;
+        }
+
+        .share-option.whatsapp:hover {
+            background: #25d366;
+            color: white;
+        }
+
+        .share-option.link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .share-option i {
+            font-size: 1.5rem;
+        }
+
+        .share-text {
+            padding: 0 2rem 2rem;
+        }
+
+        #share-textarea {
+            width: 100%;
+            height: 80px;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            resize: none;
+            font-family: inherit;
+            margin-bottom: 1rem;
+        }
+
+        .copy-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        /* زر تحميل المزيد */
+        .load-more {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .load-more-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .load-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        /* التجاوب مع الجوال */
+        @media (max-width: 768px) {
+            .publications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .publication-filters {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .publication-modal-body {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .publication-image {
+                height: 250px;
+            }
+
+            .publication-modal-actions {
+                flex-direction: column;
+            }
+
+            .publication-btn {
+                width: 100%;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .share-options {
+                grid-template-columns: 1fr;
+            }
+
+            .publication-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #publications {
+                padding: 3rem 1rem;
+            }
+
+            .publication-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+            }
+
+            .publication-card {
+                margin: 0 0.5rem;
+            }
+        }
+    </style>
+
+    <script>
+        // بيانات المنشورات المحسنة
+        const publicationsData = [
+            {
+                id: 1,
+                type: "donation",
+                title: "حملة المحافظ المدرسية 2025",
+                excerpt: "ساعدنا في توفير المحافظ واللوازم المدرسية لأطفال الأسر المحتاجة",
+                image: "images/محفظة.jpg",
+                date: "15 أوت 2025",
+                views: 1245,
+                shares: 45,
+                likes: 89,
+                description: "تنطلق حملتنا السنوية للمحافظ المدرسية بهدف توفير 500 محفظة مدرسية كاملة تحتوي على جميع اللوازم الدراسية لأطفال الأسر المحتاجة في منطقة سيدي داود وضواحيها.",
+                goal: {
+                    target: 7700000,
+                    current: 5000000,
+                    unit: "دج"
+                },
+                details: [
+                    { icon: "fas fa-bullseye", text: "الهدف: 500 محفظة" },
+                    { icon: "fas fa-users", text: "المستفيدون: أطفال الأسر المحتاجة" },
+                    { icon: "fas fa-map-marker", text: "المنطقة: سيدي داود وضواحيها" },
+                    { icon: "fas fa-clock", text: "آخر موعد: 30 سبتمبر 2024" }
+                ],
+                actions: {
+                    primary: {
+                        text: "تبرع الآن",
+                        url: "https://forms.gle/donation-school",
+                        type: "donation"
+                    },
+                    secondary: {
+                        text: "شارك الحملة",
+                        url: "#share",
+                        type: "share"
+                    },
+                    volunteer: {
+                        text: "تطوع معنا",
+                        url: "https://forms.gle/volunteer-school",
+                        type: "volunteer"
+                    }
+                }
+            },
+            {
+                id: 2,
+                type: "volunteer",
+                title: "حملة تنظيف المقابر",
+                excerpt: "انضم إلينا في حملة تنظيف المقابر وتعزيز النظافة العامة",
+                image: "images/تنظيف.jpg",
+                date: "10 جويلية 2024",
+                views: 892,
+                shares: 67,
+                likes: 124,
+                description: "ندعوكم للمشاركة في حملة تنظيف المقابر التي تنظمها الجمعية بالتعاون مع بلدية سيدي داود. الحملة تهدف إلى الحفاظ على نظافة الأماكن العامة وتعزيز الوعي البيئي.",
+                details: [
+                    { icon: "fas fa-calendar", text: "التاريخ: 25 جويلية 2024" },
+                    { icon: "fas fa-clock", text: "الوقت: 8:00 صباحاً" },
+                    { icon: "fas fa-map-marker", text: "المكان: مقبرة سيدي داود" },
+                    { icon: "fas fa-users", text: "المتطوعون المطلوبون: 50 متطوع" }
+                ],
+                actions: {
+                    primary: {
+                        text: "سجل كمتطوع",
+                        url: "https://forms.gle/volunteer-beach",
+                        type: "volunteer"
+                    },
+                    secondary: {
+                        text: "شارك الحملة",
+                        url: "#share",
+                        type: "share"
+                    },
+                    donation: {
+                        text: "ادعم الحملة",
+                        url: "https://forms.gle/donation-cleanup",
+                        type: "donation"
+                    }
+                }
+            },
+            {
+                id: 3,
+                type: "event",
+                title: "إفطار جماعي للصائمين",
+                excerpt: "إفطار جماعي في ليلة القدر بمشاركة 500 صائم من أبناء المنطقة",
+                image: "images/SELLA.jpg",
+                date: "5 أفريل 2024",
+                views: 1567,
+                shares: 89,
+                likes: 234,
+                description: "تقيم الجمعية إفطاراً جماعياً في ليلة القدر المباركة، يتضمن وجبة إفطار كاملة وبرنامجاً دينياً وترفيهياً. ندعو جميع الصائمين للمشاركة في هذه المناسبة الروحانية.",
+                details: [
+                    { icon: "fas fa-calendar", text: "التاريخ: 27 رمضان 1445" },
+                    { icon: "fas fa-clock", text: "الوقت: بعد صلاة المغرب" },
+                    { icon: "fas fa-map-marker", text: "المكان: مقر الجمعية" },
+                    { icon: "fas fa-utensils", text: "السعة: 500 شخص" }
+                ],
+                actions: {
+                    primary: {
+                        text: "سجل حضورك",
+                        url: "https://forms.gle/iftar-event",
+                        type: "volunteer"
+                    },
+                    secondary: {
+                        text: "شارك الفعالية",
+                        url: "#share",
+                        type: "share"
+                    },
+                    donation: {
+                        text: "ادعم الإفطار",
+                        url: "https://forms.gle/donation-iftar",
+                        type: "donation"
+                    }
+                }
+            },
+            {
+                id: 4,
+                type: "donation",
+                title: "حملة الأضاحي 1445",
+                excerpt: "تبرع بأضحية العيد واجعل عيدك أكثر بهجة مع الأسر المحتاجة",
+                image: "images/kebach.jpg",
+                date: "20 يونيو 2024",
+                views: 2034,
+                shares: 156,
+                likes: 345,
+                description: "انطلقت حملة الأضاحي لهذا العام بهدف توفير 100 أضحية للأسر المحتاجة في منطقة سيدي داود. تبرعك سيصنع فرحة العيد لعائلة محتاجة.",
+                goal: {
+                    target: 100,
+                    current: 65,
+                    unit: "أضحية"
+                },
+                details: [
+                    { icon: "fas fa-bullseye", text: "الهدف: 100 أضحية" },
+                    { icon: "fas fa-users", text: "المستفيدون: 100 أسرة" },
+                    { icon: "fas fa-money-bill-wave", text: "قيمة الأضحية: 45,000 دج" },
+                    { icon: "fas fa-clock", text: "آخر موعد: 5 ذو الحجة" }
+                ],
+                actions: {
+                    primary: {
+                        text: "تبرع بأضحية",
+                        url: "https://forms.gle/donation-adahi",
+                        type: "donation"
+                    },
+                    secondary: {
+                        text: "شارك الحملة",
+                        url: "#share",
+                        type: "share"
+                    },
+                    volunteer: {
+                        text: "ساعد في التوزيع",
+                        url: "https://forms.gle/volunteer-adahi",
+                        type: "volunteer"
+                    }
+                }
+            }
+        ];
+
+        let currentFilter = 'all';
+        let displayedPublications = 4;
+        let currentPublicationIndex = 0;
+        let currentSharePublication = null;
+
+        // تهيئة قسم المنشورات
+        function initPublications() {
+            renderPublications();
+            setupPublicationsEventListeners();
+        }
+
+        // عرض المنشورات
+        function renderPublications() {
+            const publicationsContainer = document.getElementById('publications-container');
+            publicationsContainer.innerHTML = '';
+
+            const filteredPublications = currentFilter === 'all'
+                ? publicationsData
+                : publicationsData.filter(pub => pub.type === currentFilter);
+
+            const publicationsToShow = filteredPublications.slice(0, displayedPublications);
+
+            publicationsToShow.forEach((publication, index) => {
+                const publicationCard = createPublicationCard(publication, index, filteredPublications);
+                publicationsContainer.appendChild(publicationCard);
+            });
+
+            // إظهار أو إخفاء زر "عرض المزيد"
+            const loadMoreBtn = document.getElementById('load-more-publications');
+            if (displayedPublications >= filteredPublications.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'inline-flex';
+            }
+        }
+
+        // إنشاء بطاقة منشور
+        function createPublicationCard(publication, index, filteredPublications) {
+            const publicationCard = document.createElement('div');
+            publicationCard.className = `publication-card ${publication.type}`;
+            publicationCard.setAttribute('data-index', index);
+
+            const progressPercentage = publication.goal ?
+                Math.round((publication.goal.current / publication.goal.target) * 100) : 0;
+
+            publicationCard.innerHTML = `
+            <div class="publication-image">
+                <img src="${publication.image}" alt="${publication.title}" loading="lazy">
+                <div class="publication-badge badge-${publication.type}">
+                    ${getTypeName(publication.type)}
+                </div>
+                <div class="publication-overlay">
+                    <h3 class="publication-title">${publication.title}</h3>
+                    <p>${publication.excerpt}</p>
+                </div>
+            </div>
+            <div class="publication-content">
+                <h3 class="publication-title">${publication.title}</h3>
+                <p class="publication-excerpt">${publication.excerpt}</p>
+                
+                <div class="publication-meta">
+                    <div class="publication-date">
+                        <i class="far fa-calendar"></i> ${publication.date}
+                    </div>
+                    <div class="publication-stats-mini">
+                        <div class="stat-mini">
+                            <i class="fas fa-eye"></i> ${publication.views}
+                        </div>
+                        <div class="stat-mini">
+                            <i class="fas fa-heart"></i> ${publication.likes}
+                        </div>
+                    </div>
+                </div>
+
+                ${publication.goal ? `
+                <div class="publication-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${progressPercentage}%"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>تم جمع ${progressPercentage}%</span>
+                        <span>${publication.goal.current} ${publication.goal.unit}</span>
+                    </div>
+                </div>
+                ` : ''}
+
+                <div class="publication-actions">
+                    <button class="publication-action-btn action-primary" data-action="primary">
+                        ${publication.actions.primary.text}
+                    </button>
+                    <button class="publication-action-btn action-secondary" data-action="secondary">
+                        ${publication.actions.secondary.text}
+                    </button>
+                    ${publication.actions.volunteer ? `
+                    <button class="publication-action-btn action-share" data-action="volunteer">
+                        ${publication.actions.volunteer.text}
+                    </button>
+                    ` : ''}
+                    ${publication.actions.donation ? `
+                    <button class="publication-action-btn action-share" data-action="donation">
+                        ${publication.actions.donation.text}
+                    </button>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+
+            // إضافة مستمعي الأحداث
+            publicationCard.addEventListener('click', (e) => {
+                if (!e.target.closest('.publication-action-btn')) {
+                    openPublicationModal(index, filteredPublications);
+                }
+            });
+
+            // تفعيل أزرار البطاقة
+            publicationCard.querySelectorAll('.publication-action-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const action = btn.getAttribute('data-action');
+                    handlePublicationAction(publication, action);
+                });
+            });
+
+            return publicationCard;
+        }
+
+        // معالجة إجراءات المنشور
+        function handlePublicationAction(publication, action) {
+            const actionConfig = publication.actions[action];
+
+            if (actionConfig.type === 'share') {
+                openShareModal(publication);
+            } else {
+                window.open(actionConfig.url, '_blank');
+
+                // تحديث الإحصائيات (محاكاة)
+                if (action === 'primary') {
+                    publication.views += 1;
+                }
+            }
+        }
+
+        // فتح نافذة المشاركة
+        function openShareModal(publication) {
+            currentSharePublication = publication;
+
+            const shareText = `انضم إلى حملة "${publication.title}" - ${publication.excerpt}\n\nساعد في نشر الخير ودعم حملات جمعية بشائر الخير\n\nرابط الحملة: ${window.location.href}#publication-${publication.id}`;
+
+            document.getElementById('share-textarea').value = shareText;
+            document.getElementById('share-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // فتح نافذة المنشور
+        function openPublicationModal(index, publications) {
+            const publication = publications[index];
+            currentPublicationIndex = index;
+
+            const progressPercentage = publication.goal ?
+                Math.round((publication.goal.current / publication.goal.target) * 100) : 0;
+
+            // تحديث محتوى النافذة
+            document.getElementById('modal-badge').textContent = getTypeName(publication.type);
+            document.getElementById('modal-badge').className = `publication-badge badge-${publication.type}`;
+            document.getElementById('modal-title').textContent = publication.title;
+            document.getElementById('modal-date').textContent = publication.date;
+            document.getElementById('modal-image').src = publication.image;
+            document.getElementById('modal-image').alt = publication.title;
+            document.getElementById('modal-views').textContent = `${publication.views.toLocaleString()} مشاهدة`;
+            document.getElementById('modal-shares').textContent = `${publication.shares} مشاركة`;
+            document.getElementById('modal-likes').textContent = `${publication.likes} إعجاب`;
+            document.getElementById('modal-description').textContent = publication.description;
+
+            // تحديث قسم الهدف إذا كان موجوداً
+            const goalSection = document.getElementById('goal-section');
+            if (publication.goal) {
+                goalSection.style.display = 'block';
+                document.getElementById('progress-fill').style.width = `${progressPercentage}%`;
+                document.getElementById('progress-text').textContent = `تم جمع ${progressPercentage}% من الهدف`;
+                document.getElementById('goal-amount').textContent =
+                    `${publication.goal.current.toLocaleString()} ${publication.goal.unit} / ${publication.goal.target.toLocaleString()} ${publication.goal.unit}`;
+            } else {
+                goalSection.style.display = 'none';
+            }
+
+            // تحديث التفاصيل
+            const detailsGrid = document.getElementById('modal-details');
+            detailsGrid.innerHTML = '';
+            publication.details.forEach(detail => {
+                const detailItem = document.createElement('div');
+                detailItem.className = 'detail-item';
+                detailItem.innerHTML = `
+                <i class="${detail.icon}"></i>
+                <span>${detail.text}</span>
+            `;
+                detailsGrid.appendChild(detailItem);
+            });
+
+            // تحديث الأزرار
+            document.getElementById('modal-primary-btn').innerHTML =
+                `<i class="fas fa-${getActionIcon(publication.actions.primary.text)}"></i> ${publication.actions.primary.text}`;
+            document.getElementById('modal-primary-btn').onclick = () => window.open(publication.actions.primary.url, '_blank');
+
+            document.getElementById('modal-secondary-btn').innerHTML =
+                `<i class="fas fa-share"></i> ${publication.actions.secondary.text}`;
+            document.getElementById('modal-secondary-btn').onclick = () => openShareModal(publication);
+
+            // إظهار أو إخفاء الزر الثالث
+            const outlineBtn = document.getElementById('modal-outline-btn');
+            if (publication.type === 'report') {
+                outlineBtn.style.display = 'flex';
+                outlineBtn.innerHTML = '<i class="fas fa-download"></i> تحميل التقرير';
+                outlineBtn.onclick = () => window.open(publication.actions.primary.url, '_blank');
+            } else if (publication.actions.volunteer) {
+                outlineBtn.style.display = 'flex';
+                outlineBtn.innerHTML = `<i class="fas fa-users"></i> ${publication.actions.volunteer.text}`;
+                outlineBtn.onclick = () => window.open(publication.actions.volunteer.url, '_blank');
+            } else if (publication.actions.donation) {
+                outlineBtn.style.display = 'flex';
+                outlineBtn.innerHTML = `<i class="fas fa-donate"></i> ${publication.actions.donation.text}`;
+                outlineBtn.onclick = () => window.open(publication.actions.donation.url, '_blank');
+            } else {
+                outlineBtn.style.display = 'none';
+            }
+
+            // فتح النافذة
+            document.getElementById('publication-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // مشاركة على منصات التواصل
+        function shareOnPlatform(platform) {
+            if (!currentSharePublication) return;
+
+            const text = `انضم إلى حملة "${currentSharePublication.title}" - ${currentSharePublication.excerpt}`;
+            const url = window.location.href + `#publication-${currentSharePublication.id}`;
+
+            let shareUrl = '';
+
+            switch (platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+                    break;
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+                    break;
+                case 'link':
+                    navigator.clipboard.writeText(url).then(() => {
+                        alert('تم نسخ الرابط إلى الحافظة');
+                    });
+                    return;
+            }
+
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        }
+
+        // إعداد مستمعي الأحداث
+        function setupPublicationsEventListeners() {
+            // فلاتر التصنيف
+            document.querySelectorAll('.publication-filters .filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.publication-filters .filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.getAttribute('data-filter');
+                    displayedPublications = 4;
+                    renderPublications();
+                });
+            });
+
+            // زر تحميل المزيد
+            document.getElementById('load-more-publications').addEventListener('click', () => {
+                displayedPublications += 2;
+                renderPublications();
+            });
+
+            // إغلاق النوافذ
+            document.querySelectorAll('.close-button').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    this.closest('.modal').style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // إغلاق النوافذ بالضغط خارجها
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+
+            // إغلاق النوافذ بالضغط على Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal').forEach(modal => {
+                        modal.style.display = 'none';
+                    });
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // أزرار المشاركة
+            document.querySelectorAll('.share-option').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const platform = btn.getAttribute('data-platform');
+                    shareOnPlatform(platform);
+                });
+            });
+
+            // نسخ نص المشاركة
+            document.getElementById('copy-share-text').addEventListener('click', () => {
+                const textarea = document.getElementById('share-textarea');
+                textarea.select();
+                navigator.clipboard.writeText(textarea.value).then(() => {
+                    alert('تم نسخ نص المشاركة إلى الحافظة');
+                });
+            });
+        }
+
+        // دوال مساعدة
+        function getTypeName(type) {
+            const types = {
+                'donation': 'نداء تبرع',
+                'volunteer': 'دعوة تطوع',
+                'event': 'فعالية',
+                'report': 'تقرير'
+            };
+            return types[type];
+        }
+
+        function getActionIcon(actionText) {
+            const icons = {
+                'تبرع الآن': 'donate',
+                'سجل كمتطوع': 'user-plus',
+                'سجل حضورك': 'calendar-check',
+                'تبرع بأضحية': 'hand-holding-heart',
+                'تحميل التقرير': 'download',
+                'شارك الحملة': 'share',
+                'ادعم الحملة': 'donate',
+                'ساعد في التوزيع': 'users',
+                'ادعم الإفطار': 'utensils'
+            };
+            return icons[actionText] || 'external-link-alt';
+        }
+
+        // تهيئة قسم المنشورات عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', initPublications);
+    </script>
+
     <!-- قسم الأنشطة -->
     <section class="section" id="activities" style="background: #e8f5e8;">
         <h2 class="section-title">أنشطتنا</h2>
         <div class="cards-grid">
             <div class="card">
                 <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
-                        alt="المحافظ المدرسية">
+                    <img src="images/محفظة.jpg" alt="المحافظ المدرسية">
                 </div>
                 <div class="card-content">
                     <h3>المحافظ المدرسية</h3>
@@ -2491,8 +3156,7 @@
 
             <div class="card">
                 <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
-                        alt="حملات النظافة">
+                    <img src="images/حملة تنظيف.jpg" alt="حملات النظافة">
                 </div>
                 <div class="card-content">
                     <h3>حملات النظافة</h3>
@@ -2503,8 +3167,7 @@
 
             <div class="card">
                 <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
-                        alt="الإغاثة الرمضانية">
+                    <img src="images/SELLA.jpg" alt="الإغاثة الرمضانية">
                 </div>
                 <div class="card-content">
                     <h3>الإغاثة الرمضانية</h3>
@@ -2522,6 +3185,19 @@
                     <h3>إفطار الصائمين</h3>
                     <p>إفطار جماعي للصائمين وتوزيع وجبات الإفطار للعائلات المحتاجة.</p>
                     <button class="card-button" data-modal="iftar">تعرف أكثر</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                        alt="إصلاح ذات البين">
+                </div>
+                <div class="card-content">
+                    <h3>الإصلاح ذات البين</h3>
+                    <p>الإصلاح ذات البين هو عملية التوفيق بين المتخاصمين، وله فضل عظيم في الإسلام لكونه من خير الأعمال
+                        ويُعدل الصدقات والصيام والصلاة.</p>
+                    <button class="card-button" data-modal="islah">تعرف أكثر</button>
                 </div>
             </div>
         </div>
@@ -2544,7 +3220,6 @@
         </div>
     </div>
 
-    <!-- النوافذ المنبثقة لقسم الأنشطة -->
     <!-- حملات النظافة -->
     <div id="cleanup-modal" class="modal">
         <div class="modal-content">
@@ -2593,6 +3268,24 @@
                 <li>توفير وجبات صحية ومتوازنة</li>
             </ul>
             <p class="modal-text">يهدف البرنامج إلى تعزيز التكافل الاجتماعي وتوفير وجبات صحية للصائمين.</p>
+        </div>
+    </div>
+
+    <!-- إصلاح ذات البين -->
+    <div id="islah-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h3 class="modal-title">إصلاح ذات البين</h3>
+            <p class="modal-text">فضائل الإصلاح ذات البين
+                :</p>
+            <ul class="modal-list">
+                <li>خير الأعمال: يُعد من أفضل الأعمال، فقد يفضل على أجر الصيام والصلاة والصدقة. </li>
+                <li>مُرضٍ لله: هو من الأعمال الخيرية التي تجلب محبة الله ورضوانه. </li>
+                <li>مر إلهي: ورد الأمر به في القرآن الكريم صراحةً، مثل قوله تعالى: "وَأَصْلِحُوا ذَاتَ بَيْنِكُمْ". </li>
+                <li>عاقبة حسنة: فضل الله على المصلحين عظيم، بينما ينهى عن فساد ذات البين الذي "تحلق الدين". </li>
+            </ul>
+            <p class="modal-text">يهدف إلى إزالة أسباب العداوة والفرقة، وتقوية الروابط الاجتماعية،
+                        ويتطلب أن يكون الصلح برضا الطرفين، وعادلاً، ومتوافقًا مع الشريعة الإسلامية.</p>
         </div>
     </div>
 
@@ -3997,425 +4690,6 @@
         });
     </script>
 
-    <!--  بيانات المنشورات -->
-    <script>
-        // بيانات المنشورات
-        const publicationsData = [
-            {
-                id: 1,
-                type: "donation",
-                title: "نداء عاجل: حملة المحافظ المدرسية 2024",
-                excerpt: "ساعدنا في توفير المحافظ واللوازم المدرسية لأطفال الأسر المحتاجة قبل بداية الموسم الدراسي",
-                image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-                date: "15 أغسطس 2024",
-                views: 1245,
-                shares: 45,
-                likes: 89,
-                description: "تنطلق حملتنا السنوية للمحافظ المدرسية بهدف توفير 500 محفظة مدرسية كاملة تحتوي على جميع اللوازم الدراسية لأطفال الأسر المحتاجة في منطقة سيدي داود وضواحيها.",
-                goal: {
-                    target: 7700000,
-                    current: 5000000,
-                    unit: "دج"
-                },
-                details: [
-                    { icon: "fas fa-bullseye", text: "الهدف: 500 محفظة" },
-                    { icon: "fas fa-users", text: "المستفيدون: أطفال الأسر المحتاجة" },
-                    { icon: "fas fa-map-marker", text: "المنطقة: سيدي داود وضواحيها" },
-                    { icon: "fas fa-clock", text: "آخر موعد: 30 سبتمبر 2024" }
-                ],
-                primaryAction: {
-                    text: "تبرع الآن",
-                    url: "https://forms.gle/donation-school"
-                },
-                secondaryAction: {
-                    text: "شارك الحملة",
-                    url: "#"
-                }
-            },
-            {
-                id: 2,
-                type: "volunteer",
-                title: "دعوة للمتطوعين: حملة تنظيف شاطئ السوانين",
-                excerpt: "انضم إلينا في حملة تنظيف شاطئ السوانين والحفاظ على البيئة البحرية",
-                image: "https://images.unsplash.com/photo-1571624436279-b272aff752b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-                date: "10 جويلية 2024",
-                views: 892,
-                shares: 67,
-                likes: 124,
-                description: "ندعوكم للمشاركة في حملة تنظيف شاطئ السوانين التي تنظمها الجمعية بالتعاون مع بلدية سيدي داود. الحملة تهدف إلى الحفاظ على البيئة البحرية ونشر الوعي البيئي.",
-                details: [
-                    { icon: "fas fa-calendar", text: "التاريخ: 25 جويلية 2024" },
-                    { icon: "fas fa-clock", text: "الوقت: 8:00 صباحاً" },
-                    { icon: "fas fa-map-marker", text: "المكان: شاطئ السوانين" },
-                    { icon: "fas fa-users", text: "المتطوعون المطلوبون: 50 متطوع" }
-                ],
-                primaryAction: {
-                    text: "سجل كمتطوع",
-                    url: "https://forms.gle/volunteer-beach"
-                },
-                secondaryAction: {
-                    text: "معلومات أكثر",
-                    url: "#"
-                }
-            },
-            {
-                id: 3,
-                type: "event",
-                title: "إفطار جماعي للصائمين - ليلة القدر",
-                excerpt: "إفطار جماعي في ليلة القدر بمشاركة 500 صائم من أبناء المنطقة",
-                image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-                date: "5 أفريل 2024",
-                views: 1567,
-                shares: 89,
-                likes: 234,
-                description: "تقيم الجمعية إفطاراً جماعياً في ليلة القدر المباركة، يتضمن وجبة إفطار كاملة وبرنامجاً دينياً وترفيهياً. ندعو جميع الصائمين للمشاركة في هذه المناسبة الروحانية.",
-                details: [
-                    { icon: "fas fa-calendar", text: "التاريخ: 27 رمضان 1445" },
-                    { icon: "fas fa-clock", text: "الوقت: بعد صلاة المغرب" },
-                    { icon: "fas fa-map-marker", text: "المكان: مقر الجمعية" },
-                    { icon: "fas fa-utensils", text: "السعة: 500 شخص" }
-                ],
-                primaryAction: {
-                    text: "سجل حضورك",
-                    url: "https://forms.gle/iftar-event"
-                },
-                secondaryAction: {
-                    text: "ادعم الفعالية",
-                    url: "#"
-                }
-            },
-            {
-                id: 4,
-                type: "donation",
-                title: "حملة الأضاحي 1445 - أضحيات العيد",
-                excerpt: "تبرع بأضحية العيد واجعل عيدك أكثر بهجة مع الأسر المحتاجة",
-                image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-                date: "20 يونيو 2024",
-                views: 2034,
-                shares: 156,
-                likes: 345,
-                description: "انطلقت حملة الأضاحي لهذا العام بهدف توفير 100 أضحية للأسر المحتاجة في منطقة سيدي داود. تبرعك سيصنع فرحة العيد لعائلة محتاجة.",
-                goal: {
-                    target: 100,
-                    current: 65,
-                    unit: "أضحية"
-                },
-                details: [
-                    { icon: "fas fa-bullseye", text: "الهدف: 100 أضحية" },
-                    { icon: "fas fa-users", text: "المستفيدون: 100 أسرة" },
-                    { icon: "fas fa-money-bill-wave", text: "قيمة الأضحية: 45,000 دج" },
-                    { icon: "fas fa-clock", text: "آخر موعد: 5 ذو الحجة" }
-                ],
-                primaryAction: {
-                    text: "تبرع بأضحية",
-                    url: "https://forms.gle/donation-adahi"
-                },
-                secondaryAction: {
-                    text: "شارك الحملة",
-                    url: "#"
-                }
-            },
-            {
-                id: 5,
-                type: "report",
-                title: "تقرير أنشطة الربع الأول 2024",
-                excerpt: "اطلع على إنجازات الجمعية وتقارير الأنشطة للربع الأول من العام",
-                image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-                date: "15 أفريل 2024",
-                views: 678,
-                shares: 23,
-                likes: 45,
-                description: "يستعرض هذا التقرير إنجازات جمعية بشائر الخير خلال الربع الأول من عام 2024، بما في ذلك المشاريع المنفذة وعدد المستفيدين والتحديات التي واجهت العمل.",
-                details: [
-                    { icon: "fas fa-chart-bar", text: "المستفيدون: 1,200 شخص" },
-                    { icon: "fas fa-project-diagram", text: "المشاريع: 8 مشاريع" },
-                    { icon: "fas fa-hand-holding-usd", text: "إجمالي التبرعات: 12 مليون دج" },
-                    { icon: "fas fa-users", text: "المتطوعون: 85 متطوع" }
-                ],
-                primaryAction: {
-                    text: "تحميل التقرير",
-                    url: "https://drive.google.com/report-2024-q1"
-                },
-                secondaryAction: {
-                    text: "مشاركة التقرير",
-                    url: "#"
-                }
-            },
-            {
-                id: 6,
-                type: "volunteer",
-                title: "برنامج تدريب المتطوعين - الدفعة الجديدة",
-                excerpt: "انضم إلى برنامج تأهيل المتطوعين الجدد وتعلم مهارات العمل التطوعي",
-                image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
-                date: "1 مارس 2024",
-                views: 543,
-                shares: 34,
-                likes: 78,
-                description: "تفتح الجمعية باب التسجيل في الدفعة الجديدة من برنامج تأهيل المتطوعين، الذي يشمل تدريبات في الإسعافات الأولية، العمل الجماعي، وإدارة المشاريع التطوعية.",
-                details: [
-                    { icon: "fas fa-calendar", text: "مدة البرنامج: 4 أسابيع" },
-                    { icon: "fas fa-clock", text: "المقاعد المتاحة: 30 متطوع" },
-                    { icon: "fas fa-map-marker", text: "المكان: مقر الجمعية" },
-                    { icon: "fas fa-graduation-cap", text: "شهادة معتمدة في نهاية البرنامج" }
-                ],
-                primaryAction: {
-                    text: "سجل في البرنامج",
-                    url: "https://forms.gle/volunteer-training"
-                },
-                secondaryAction: {
-                    text: "استفسر الآن",
-                    url: "#"
-                }
-            }
-        ];
-
-        let currentFilter = 'all';
-        let displayedPublications = 4;
-        let currentPublicationIndex = 0;
-
-        // تهيئة قسم المنشورات
-        function initPublications() {
-            renderPublications();
-            setupPublicationsEventListeners();
-        }
-
-        // عرض المنشورات
-        function renderPublications() {
-            const publicationsContainer = document.getElementById('publications-container');
-            publicationsContainer.innerHTML = '';
-
-            const filteredPublications = currentFilter === 'all'
-                ? publicationsData
-                : publicationsData.filter(pub => pub.type === currentFilter);
-
-            const publicationsToShow = filteredPublications.slice(0, displayedPublications);
-
-            publicationsToShow.forEach((publication, index) => {
-                const publicationCard = document.createElement('div');
-                publicationCard.className = `publication-card ${publication.type}`;
-                publicationCard.setAttribute('data-index', index);
-
-                const progressPercentage = publication.goal ?
-                    Math.round((publication.goal.current / publication.goal.target) * 100) : 0;
-
-                publicationCard.innerHTML = `
-                <div class="publication-image">
-                    <img src="${publication.image}" alt="${publication.title}" loading="lazy">
-                    <div class="publication-badge badge-${publication.type}">
-                        ${getTypeName(publication.type)}
-                    </div>
-                    <div class="publication-overlay">
-                        <h3 class="publication-title">${publication.title}</h3>
-                        <p>${publication.excerpt}</p>
-                    </div>
-                </div>
-                <div class="publication-content">
-                    <h3 class="publication-title">${publication.title}</h3>
-                    <p class="publication-excerpt">${publication.excerpt}</p>
-                    
-                    <div class="publication-meta">
-                        <div class="publication-date">
-                            <i class="far fa-calendar"></i> ${publication.date}
-                        </div>
-                        <div class="publication-stats-mini">
-                            <div class="stat-mini">
-                                <i class="fas fa-eye"></i> ${publication.views}
-                            </div>
-                            <div class="stat-mini">
-                                <i class="fas fa-heart"></i> ${publication.likes}
-                            </div>
-                        </div>
-                    </div>
-
-                    ${publication.goal ? `
-                    <div class="publication-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: ${progressPercentage}%"></div>
-                        </div>
-                        <div class="progress-text">
-                            <span>تم جمع ${progressPercentage}%</span>
-                            <span>${publication.goal.current} ${publication.goal.unit}</span>
-                        </div>
-                    </div>
-                    ` : ''}
-
-                    <div class="publication-actions">
-                        <button class="publication-action-btn action-primary" data-action="primary">
-                            ${publication.primaryAction.text}
-                        </button>
-                        <button class="publication-action-btn action-secondary" data-action="secondary">
-                            ${publication.secondaryAction.text}
-                        </button>
-                    </div>
-                </div>
-            `;
-
-                publicationCard.addEventListener('click', (e) => {
-                    if (!e.target.closest('.publication-action-btn')) {
-                        openPublicationModal(index, filteredPublications);
-                    }
-                });
-
-                // تفعيل أزرار البطاقة
-                publicationCard.querySelectorAll('.publication-action-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const action = btn.getAttribute('data-action');
-                        const actionUrl = action === 'primary' ?
-                            publication.primaryAction.url : publication.secondaryAction.url;
-                        window.open(actionUrl, '_blank');
-                    });
-                });
-
-                publicationsContainer.appendChild(publicationCard);
-            });
-
-            // إظهار أو إخفاء زر "عرض المزيد"
-            const loadMoreBtn = document.getElementById('load-more-publications');
-            if (displayedPublications >= filteredPublications.length) {
-                loadMoreBtn.style.display = 'none';
-            } else {
-                loadMoreBtn.style.display = 'inline-flex';
-            }
-        }
-
-        // فتح نافذة المنشور
-        function openPublicationModal(index, publications) {
-            const publication = publications[index];
-            currentPublicationIndex = index;
-
-            const progressPercentage = publication.goal ?
-                Math.round((publication.goal.current / publication.goal.target) * 100) : 0;
-
-            // تحديث محتوى النافذة
-            document.getElementById('modal-badge').textContent = getTypeName(publication.type);
-            document.getElementById('modal-badge').className = `publication-badge badge-${publication.type}`;
-            document.getElementById('modal-title').textContent = publication.title;
-            document.getElementById('modal-date').textContent = publication.date;
-            document.getElementById('modal-image').src = publication.image;
-            document.getElementById('modal-image').alt = publication.title;
-            document.getElementById('modal-views').textContent = `${publication.views.toLocaleString()} مشاهدة`;
-            document.getElementById('modal-shares').textContent = `${publication.shares} مشاركة`;
-            document.getElementById('modal-likes').textContent = `${publication.likes} إعجاب`;
-            document.getElementById('modal-description').textContent = publication.description;
-
-            // تحديث قسم الهدف إذا كان موجوداً
-            const goalSection = document.getElementById('goal-section');
-            if (publication.goal) {
-                goalSection.style.display = 'block';
-                document.getElementById('progress-fill').style.width = `${progressPercentage}%`;
-                document.getElementById('progress-text').textContent = `تم جمع ${progressPercentage}% من الهدف`;
-                document.getElementById('goal-amount').textContent =
-                    `${publication.goal.current.toLocaleString()} ${publication.goal.unit} / ${publication.goal.target.toLocaleString()} ${publication.goal.unit}`;
-            } else {
-                goalSection.style.display = 'none';
-            }
-
-            // تحديث التفاصيل
-            const detailsGrid = document.getElementById('modal-details');
-            detailsGrid.innerHTML = '';
-            publication.details.forEach(detail => {
-                const detailItem = document.createElement('div');
-                detailItem.className = 'detail-item';
-                detailItem.innerHTML = `
-                <i class="${detail.icon}"></i>
-                <span>${detail.text}</span>
-            `;
-                detailsGrid.appendChild(detailItem);
-            });
-
-            // تحديث الأزرار
-            document.getElementById('modal-primary-btn').innerHTML =
-                `<i class="fas fa-${getActionIcon(publication.primaryAction.text)}"></i> ${publication.primaryAction.text}`;
-            document.getElementById('modal-primary-btn').onclick = () => window.open(publication.primaryAction.url, '_blank');
-
-            document.getElementById('modal-secondary-btn').innerHTML =
-                `<i class="fas fa-share"></i> ${publication.secondaryAction.text}`;
-            document.getElementById('modal-secondary-btn').onclick = () => window.open(publication.secondaryAction.url, '_blank');
-
-            // إظهار أو إخفاء الزر الثالث
-            const outlineBtn = document.getElementById('modal-outline-btn');
-            if (publication.type === 'report') {
-                outlineBtn.style.display = 'flex';
-                outlineBtn.innerHTML = '<i class="fas fa-download"></i> تحميل التقرير';
-                outlineBtn.onclick = () => window.open(publication.primaryAction.url, '_blank');
-            } else {
-                outlineBtn.style.display = 'none';
-            }
-
-            // فتح النافذة
-            document.getElementById('publication-modal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        // إعداد مستمعي الأحداث
-        function setupPublicationsEventListeners() {
-            // فلاتر التصنيف
-            document.querySelectorAll('.publication-filters .filter-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    document.querySelectorAll('.publication-filters .filter-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentFilter = btn.getAttribute('data-filter');
-                    displayedPublications = 4;
-                    renderPublications();
-                });
-            });
-
-            // زر تحميل المزيد
-            document.getElementById('load-more-publications').addEventListener('click', () => {
-                displayedPublications += 2;
-                renderPublications();
-            });
-
-            // إغلاق نافذة المنشور
-            document.querySelector('#publication-modal .close-button').addEventListener('click', closePublicationModal);
-
-            // إغلاق النافذة بالضغط خارجها
-            document.getElementById('publication-modal').addEventListener('click', (e) => {
-                if (e.target === document.getElementById('publication-modal')) {
-                    closePublicationModal();
-                }
-            });
-
-            // إغلاق النافذة بالضغط على Escape
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closePublicationModal();
-                }
-            });
-        }
-
-        // إغلاق نافذة المنشور
-        function closePublicationModal() {
-            document.getElementById('publication-modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // دوال مساعدة
-        function getTypeName(type) {
-            const types = {
-                'donation': 'نداء تبرع',
-                'volunteer': 'دعوة تطوع',
-                'event': 'فعالية',
-                'report': 'تقرير'
-            };
-            return types[type];
-        }
-
-        function getActionIcon(actionText) {
-            const icons = {
-                'تبرع الآن': 'donate',
-                'سجل كمتطوع': 'user-plus',
-                'سجل حضورك': 'calendar-check',
-                'تبرع بأضحية': 'hand-holding-heart',
-                'تحميل التقرير': 'download'
-            };
-            return icons[actionText] || 'external-link-alt';
-        }
-
-        // تهيئة قسم المنشورات عند تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', initPublications);
-    </script>
 
     <!--  بيانات التبرعات -->
     <script>
