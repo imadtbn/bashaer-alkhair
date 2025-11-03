@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
@@ -18,382 +18,389 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="icons/icon.jpg">
 
-<meta property="og:image" content="icons/icon.jpg">
+    <meta property="og:image" content="icons/icon.jpg">
 
 
     <!-- العام css -->
 
-<style>
-```css
-/* تحسينات إضافية للاستجابة على الجوال */
-@media (max-width: 480px) {
-    /* تحسين الهيدر والشريط العلوي */
-    .header {
-        padding: 0.5rem 0;
-    }
-    
-    .nav-container {
-        padding: 0 1rem;
-    }
-    
-    .logo-img {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .logo-text {
-        font-size: 1.1rem;
-    }
-    
-    .logo-subtext {
-        font-size: 0.7rem;
-    }
-
-    /* تحسين القسم الرئيسي */
-    .hero {
-        height: 60vh;
-        margin-top: 60px;
-        padding: 0 0.5rem;
-    }
-    
-    .hero-content h1 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-    }
-    
-    .hero-content p {
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .hero-content p:last-of-type {
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .cta-button {
-        padding: 12px 25px;
-        font-size: 1rem;
-        min-width: 160px;
-    }
-
-    /* تحسين الأقسام */
-    .section {
-        padding: 2rem 0.5rem;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-    }
-
-    /* تحسين البطاقات */
-    .cards-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        margin-top: 1rem;
-    }
-    
-    .card {
-        margin: 0 0.5rem;
-    }
-    
-    .card-img {
-        height: 180px;
-    }
-    
-    .card-content {
-        padding: 1.5rem;
-    }
-    
-    .card h3 {
-        font-size: 1.2rem;
-    }
-
-    /* تحسين النوافذ المنبثقة */
-    .modal-content {
-        margin: 0.5rem;
-        width: calc(100% - 1rem);
-        padding: 1rem;
-    }
-    
-    .modal-title {
-        font-size: 1.3rem;
-    }
-    
-    .modal-body {
-        padding: 1rem;
-    }
-
-    /* تحسين معرض الصور */
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .gallery-item {
-        margin: 0 0.5rem;
-    }
-
-    /* تحسين الفلاتر */
-    .publication-filters,
-    .gallery-filters {
-        gap: 0.3rem;
-        margin-bottom: 2rem;
-        padding: 0 0.5rem;
-    }
-    
-    .filter-btn {
-        padding: 8px 12px;
-        font-size: 0.8rem;
-        gap: 0.3rem;
-    }
-
-    /* تحسين الفوتر */
-    .footer {
-        padding: 2rem 0.5rem 1rem;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .footer-section {
-        text-align: center;
-    }
-    
-    .footer-section h3::after {
-        right: 50%;
-        transform: translateX(50%);
-    }
-
-    /* تحسين أزرار التبرع */
-    .donation-methods {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .method-card {
-        padding: 1rem;
-    }
-    
-    .donation-actions {
-        flex-direction: column;
-        gap: 0.8rem;
-    }
-    
-    .donation-btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    /* تحسين النوافذ المنبثقة للمنشورات */
-    .publication-modal-body {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 1rem;
-    }
-    
-    .publication-image {
-        height: 200px;
-    }
-    
-    .publication-stats {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    
-    .publication-modal-actions {
-        flex-direction: column;
-        gap: 0.8rem;
-        padding: 0 1rem 1rem;
-    }
-    
-    .publication-btn {
-        width: 100%;
-    }
-
-    /* تحسين Lightbox */
-    .lightbox-content {
-        max-width: 95%;
-        max-height: 95%;
-    }
-    
-    .lightbox-info {
-        padding: 1rem;
-    }
-    
-    .lightbox-title {
-        font-size: 1.1rem;
-    }
-    
-    .lightbox-description {
-        font-size: 0.9rem;
-    }
-    
-    .lightbox-meta {
-        flex-direction: column;
-        gap: 0.5rem;
-        font-size: 0.8rem;
-    }
-
-    /* تحسين القائمة المتنقلة */
-    .nav-menu {
-        padding: 0.5rem 0;
-    }
-    
-    .nav-menu a {
-        padding: 0.8rem 1rem;
-        font-size: 0.9rem;
-    }
-
-    /* تحسين التمرير على iOS */
-    .hero,
-    .section,
-    .modal-content {
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* منع التكبير على حقول الإدخال على iOS */
-    input, select, textarea {
-        font-size: 16px;
-    }
-
-    /* تحسين الظلال للأداء على الجوال */
-    .card,
-    .publication-card,
-    .gallery-item {
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .card:hover,
-    .publication-card:hover,
-    .gallery-item:hover {
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    }
-}
-
-/* تحسينات إضافية للشاشات الصغيرة جداً */
+    <style>
+/* تقليل المسافة بين الأزرار في الشاشات الصغيرة */
 @media (max-width: 360px) {
-    .hero-content h1 {
-        font-size: 1.5rem;
-    }
-    
-    .hero-content p {
-        font-size: 0.9rem;
-    }
-    
-    .cta-button {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-        min-width: 140px;
-    }
-    
-    .section-title {
-        font-size: 1.3rem;
-    }
-    
-    .filter-btn {
-        padding: 6px 10px;
-        font-size: 0.75rem;
-    }
-    
-    .logo-text {
-        font-size: 1rem;
-    }
-    
-    .logo-subtext {
-        font-size: 0.65rem;
-    }
+  .hero-buttons {
+    gap: 0.1rem;
+    flex-wrap: wrap;
+  }
+  .cta-button {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+  }
 }
 
-/* تحسين الأداء على الأجهزة ذات اللمس */
-@media (hover: none) and (pointer: coarse) {
-    .card:hover,
-    .publication-card:hover,
-    .gallery-item:hover {
-        transform: none;
-    }
-    
-    .card-button:hover,
-    .cta-button:hover,
-    .filter-btn:hover {
-        transform: none;
-    }
-    
-    /* إضافة تأثيرات بديلة للأجهزة التي باللمس */
-    .card:active,
-    .publication-card:active,
-    .gallery-item:active {
-        transform: scale(0.98);
-    }
-}
 
-/* تحسين التخطيط للأجهزة ذات الشاشات الصغيرة في الوضع الأفقي */
-@media (max-height: 500px) and (orientation: landscape) {
-    .hero {
-        height: 100vh;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
-    
-    .hero-content h1 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    .hero-content p {
-        font-size: 0.9rem;
-        margin-bottom: 0.3rem;
-    }
-    
-    .hero-buttons {
-        gap: 0.5rem;
-    }
-    
-    .cta-button {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-    }
-}
+        /* تحسينات إضافية للاستجابة على الجوال */
+        @media (max-width: 480px) {
 
-/* تحسين إمكانية الوصول للجوال */
-@media (max-width: 768px) {
-    /* زيادة حجم مناطق اللمس */
-    button, 
-    .card-button, 
-    .cta-button, 
-    .filter-btn,
-    .nav-menu a {
-        min-height: 44px;
-        min-width: 44px;
-    }
-    
-    /* تحسين التبويب للجوال */
-    .nav-menu a:focus,
-    button:focus,
-    .card-button:focus,
-    .cta-button:focus {
-        outline: 2px solid var(--primary-color);
-        outline-offset: 2px;
-    }
-}
-```
+            /* تحسين الهيدر والشريط العلوي */
+            .header {
+                padding: 0.5rem 0;
+            }
 
-هذا الكود يحسن الاستجابة للجوال من خلال:
+            .nav-container {
+                padding: 0 1rem;
+            }
 
-1. تحسين التخطيط للشاشات الصغيرة (أقل من 480px)
-2. ضبط أحجام النصوص والعناصر بشكل مناسب
-3. تحسين المسافات والهوامش للشاشات الصغيرة
-4. تحسين تجربة اللمس وزيادة مساحات النقر
-5. تحسين الأداء على الأجهزة المحمولة
-6. إضافة تحسينات للوضع الأفقي على الجوال
-7. تحسين إمكانية الوصول للمستخدمين ذوي الاحتياجات الخاصة
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
 
-الكود يتكامل مع الاستعلامات الحالية في الملف ويضيف تحسينات إضافية للتجربة على الجوال.
-</style>
+            .logo-text {
+                font-size: 1.1rem;
+            }
+
+            .logo-subtext {
+                font-size: 0.7rem;
+            }
+
+            /* تحسين القسم الرئيسي */
+            .hero {
+                height: 60vh;
+                margin-top: 60px;
+                padding: 0 0.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero-content p:last-of-type {
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+                min-width: 160px;
+            }
+
+            /* تحسين الأقسام */
+            .section {
+                padding: 2rem 0.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            /* تحسين البطاقات */
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .card {
+                margin: 0 0.5rem;
+            }
+
+            .card-img {
+                height: 180px;
+            }
+
+            .card-content {
+                padding: 1.5rem;
+            }
+
+            .card h3 {
+                font-size: 1.2rem;
+            }
+
+            /* تحسين النوافذ المنبثقة */
+            .modal-content {
+                margin: 0.5rem;
+                width: calc(100% - 1rem);
+                padding: 1rem;
+            }
+
+            .modal-title {
+                font-size: 1.3rem;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+
+            /* تحسين معرض الصور */
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                margin: 0 0.5rem;
+            }
+
+            /* تحسين الفلاتر */
+            .publication-filters,
+            .gallery-filters {
+                gap: 0.3rem;
+                margin-bottom: 2rem;
+                padding: 0 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                gap: 0.3rem;
+            }
+
+            /* تحسين الفوتر */
+            .footer {
+                padding: 2rem 0.5rem 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .footer-section h3::after {
+                right: 50%;
+                transform: translateX(50%);
+            }
+
+            /* تحسين أزرار التبرع */
+            .donation-methods {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .method-card {
+                padding: 1rem;
+            }
+
+            .donation-actions {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .donation-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* تحسين النوافذ المنبثقة للمنشورات */
+            .publication-modal-body {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .publication-image {
+                height: 200px;
+            }
+
+            .publication-stats {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .publication-modal-actions {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 0 1rem 1rem;
+            }
+
+            .publication-btn {
+                width: 100%;
+            }
+
+            /* تحسين Lightbox */
+            .lightbox-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+
+            .lightbox-info {
+                padding: 1rem;
+            }
+
+            .lightbox-title {
+                font-size: 1.1rem;
+            }
+
+            .lightbox-description {
+                font-size: 0.9rem;
+            }
+
+            .lightbox-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            /* تحسين القائمة المتنقلة */
+            .nav-menu {
+                padding: 0.5rem 0;
+            }
+
+            .nav-menu a {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            /* تحسين التمرير على iOS */
+            .hero,
+            .section,
+            .modal-content {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* منع التكبير على حقول الإدخال على iOS */
+            input,
+            select,
+            textarea {
+                font-size: 16px;
+            }
+
+            /* تحسين الظلال للأداء على الجوال */
+            .card,
+            .publication-card,
+            .gallery-item {
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .card:hover,
+            .publication-card:hover,
+            .gallery-item:hover {
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        /* تحسينات إضافية للشاشات الصغيرة جداً */
+        @media (max-width: 360px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                min-width: 140px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .filter-btn {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .logo-subtext {
+                font-size: 0.65rem;
+            }
+        }
+
+        /* تحسين الأداء على الأجهزة ذات اللمس */
+        @media (hover: none) and (pointer: coarse) {
+
+            .card:hover,
+            .publication-card:hover,
+            .gallery-item:hover {
+                transform: none;
+            }
+
+            .card-button:hover,
+            .cta-button:hover,
+            .filter-btn:hover {
+                transform: none;
+            }
+
+            /* إضافة تأثيرات بديلة للأجهزة التي باللمس */
+            .card:active,
+            .publication-card:active,
+            .gallery-item:active {
+                transform: scale(0.98);
+            }
+        }
+
+        /* تحسين التخطيط للأجهزة ذات الشاشات الصغيرة في الوضع الأفقي */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                height: 100vh;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .hero-buttons {
+                gap: 0.5rem;
+            }
+
+            .cta-button {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* تحسين إمكانية الوصول للجوال */
+        @media (max-width: 768px) {
+
+            /* زيادة حجم مناطق اللمس */
+            button,
+            .card-button,
+            .cta-button,
+            .filter-btn,
+            .nav-menu a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            /* تحسين التبويب للجوال */
+            .nav-menu a:focus,
+            button:focus,
+            .card-button:focus,
+            .cta-button:focus {
+                outline: 2px solid var(--primary-color);
+                outline-offset: 2px;
+            }
+        }
+
+        ``` هذا الكود يحسن الاستجابة للجوال من خلال: 1. تحسين التخطيط للشاشات الصغيرة (أقل من 480px) 2. ضبط أحجام النصوص والعناصر بشكل مناسب 3. تحسين المسافات والهوامش للشاشات الصغيرة 4. تحسين تجربة اللمس وزيادة مساحات النقر 5. تحسين الأداء على الأجهزة المحمولة 6. إضافة تحسينات للوضع الأفقي على الجوال 7. تحسين إمكانية الوصول للمستخدمين ذوي الاحتياجات الخاصة الكود يتكامل مع الاستعلامات الحالية في الملف ويضيف تحسينات إضافية للتجربة على الجوال.
+    </style>
+
     <style>
         /* الأساسيات والمتغيرات */
         :root {
@@ -525,7 +532,7 @@
         .hero {
             background: linear-gradient(rgba(241, 243, 242, 0.2), rgba(52, 152, 219, 0.4)),
                 url('images/cover.jpg') center/cover;
-            height: 75vh;
+            height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -894,7 +901,7 @@
         .hero {
             background: linear-gradient(rgba(241, 243, 242, 0.2), rgba(52, 152, 219, 0.4)),
                 url('images/covert.jpg') center/cover;
-            height: 75vh;
+            height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1153,8 +1160,6 @@
             }
         }
     </style>
-
-
 
     <!-- نافذة التبرعات -->
     <style>
@@ -1945,6 +1950,7 @@
             <ul class="nav-menu">
                 <li><a href="#home">الرئيسية</a></li>
                 <li><a href="#about">من نحن</a></li>
+                <li><a href="#publication">نداءات ومنشورات</a></li>
                 <li><a href="#activities">أنشطتنا</a></li>
                 <li><a href="#gallery">معرض الصور</a></li>
                 <li><a href="#contact">اتصل بنا</a></li>
@@ -1959,12 +1965,82 @@
             <p>"إن الله في عون العبد ما كان العبد في عون أخيه"</p>
             <p>نسعى لخدمة المجتمع عبر برامج تطوعية وخيرية متنوعة</p>
             <div class="hero-buttons">
-                <button class="cta-button" id="joinBtn">انضم إلينا <i class="fas fa-arrow-left"></i></button>
-                <button class="cta-button secondary" id="helpBtn">طلب مساعدة</button>
-                <button class="cta-button tertiary" id="donateBtn">تبرعات</button>
+                <button class="cta-button" id="joinBtn">
+                    <i class="fas fa-users"></i> انخرط في الجمعية
+                </button>
+                <!-- زر طلب المساعدة داخل القسم الرئيسي -->
+                <button class="cta-button secondary" data-modal="help-request-modal">
+                    <i class="fas fa-hand-holding-heart"></i> طلب مساعدة
+                </button>
+                <button class="cta-button tertiary" id="donateBtn">
+                    <i class="fas fa-donate"></i> تبرع الآن
+                </button>
+                <button class="cta-button fortiary" id="volunteerBtn">
+                    <i class="fas fa-hands-helping"></i> سجل كمتطوع
+                </button>
             </div>
         </div>
     </section>
+
+    <!-- نافذة الإنخراط -->
+    <div id="volunteer-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fas fa-users"></i>الإنخراط في الجمعية</h3>
+                <p class="modal-subtitle">انضم إلى فريق جمعية بشائر الخير</p>
+            </div>
+            <div class="modal-body">
+                <div class="volunteer-opportunities">
+                    <h4><i class="fas fa-tasks"></i> مجالات التطوع</h4>
+                    <div class="opportunities-grid">
+                        <div class="opportunity-item">
+                            <i class="fas fa-people-carry"></i>
+                            <span>توزيع المساعدات</span>
+                        </div>
+                        <div class="opportunity-item">
+                            <i class="fas fa-broom"></i>
+                            <span>حملات النظافة</span>
+                        </div>
+                        <div class="opportunity-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>التوعية المجتمعية</span>
+                        </div>
+                        <div class="opportunity-item">
+                            <i class="fas fa-child"></i>
+                            <span>أنشطة الأطفال</span>
+                        </div>
+                        <div class="opportunity-item">
+                            <i class="fas fa-laptop"></i>
+                            <span>الدعم الإداري</span>
+                        </div>
+                        <div class="opportunity-item">
+                            <i class="fas fa-first-aid"></i>
+                            <span>الإسعافات الأولية</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="volunteer-requirements">
+                    <h4><i class="fas fa-clipboard-check"></i> شروط الإنخراط والتطوع</h4>
+                    <ul class="requirements-list">
+                        <li>العمر: 18 سنة فما فوق</li>
+                        <li>الالتزام بقيم وأخلاقيات الجمعية</li>
+                        <li>القدرة على العمل ضمن فريق</li>
+                        <li>الرغبة الحقيقية في خدمة المجتمع</li>
+                        <li>توفر وقت للتطوع (4 ساعات أسبوعياً على الأقل)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn primary" onclick="window.open('https://forms.gle/volunteer-form', '_blank')">
+                    <i class="fas fa-file-signature"></i> تقديم طلب الإنخراط
+                </button>
+                <button class="modal-btn secondary" onclick="window.open('tel:+213551234567')">
+                    <i class="fas fa-phone"></i> استفسار هاتفي
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- نافذة التبرعات المنبثقة -->
     <div id="donation-modal" class="modal">
@@ -3655,11 +3731,12 @@
             <ul class="modal-list">
                 <li>خير الأعمال: يُعد من أفضل الأعمال، فقد يفضل على أجر الصيام والصلاة والصدقة. </li>
                 <li>مُرضٍ لله: هو من الأعمال الخيرية التي تجلب محبة الله ورضوانه. </li>
-                <li>مر إلهي: ورد الأمر به في القرآن الكريم صراحةً، مثل قوله تعالى: "وَأَصْلِحُوا ذَاتَ بَيْنِكُمْ". </li>
+                <li>مر إلهي: ورد الأمر به في القرآن الكريم صراحةً، مثل قوله تعالى: "وَأَصْلِحُوا ذَاتَ بَيْنِكُمْ".
+                </li>
                 <li>عاقبة حسنة: فضل الله على المصلحين عظيم، بينما ينهى عن فساد ذات البين الذي "تحلق الدين". </li>
             </ul>
             <p class="modal-text">يهدف إلى إزالة أسباب العداوة والفرقة، وتقوية الروابط الاجتماعية،
-                        ويتطلب أن يكون الصلح برضا الطرفين، وعادلاً، ومتوافقًا مع الشريعة الإسلامية.</p>
+                ويتطلب أن يكون الصلح برضا الطرفين، وعادلاً، ومتوافقًا مع الشريعة الإسلامية.</p>
         </div>
     </div>
 
@@ -4014,7 +4091,7 @@
 
     <!-- قسم انضم إلينا -->
     <section class="section" id="contact">
-        <h2 class="section-title">انضم إلينا</h2>
+        <h2 class="section-title">إتصل بنا</h2>
         <div class="cards-grid">
             <!-- بطاقة العنوان -->
             <div class="card">
@@ -4080,10 +4157,10 @@
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3><i class="fas fa-users"></i> تطوع معنا</h3>
-                    <p>انضم إلى فريق المتطوعين وساهم في خدمة المجتمع</p>
+                    <h3><i class="fas fa-users"></i> إنظم إلينا</h3>
+                    <p>انضم إلى فريق الجمعية والمتطوعين وساهم في خدمة المجتمع</p>
                     <button class="card-button" data-modal="volunteer">
-                        <i class="fas fa-handshake"></i> تقديم طلب التطوع
+                        <i class="fas fa-handshake"></i> تقديم طلب الإنخراط
                     </button>
                 </div>
             </div>
@@ -4292,65 +4369,7 @@
         </div>
     </div>
 
-    <!-- نافذة التطوع -->
-    <div id="volunteer-modal" class="modal">
-        <div class="modal-content">
-            <button class="close-button">&times;</button>
-            <div class="modal-header">
-                <h3 class="modal-title"><i class="fas fa-users"></i> التطوع معنا</h3>
-                <p class="modal-subtitle">انضم إلى فريق متطوعي الجمعية</p>
-            </div>
-            <div class="modal-body">
-                <div class="volunteer-opportunities">
-                    <h4><i class="fas fa-tasks"></i> مجالات التطوع</h4>
-                    <div class="opportunities-grid">
-                        <div class="opportunity-item">
-                            <i class="fas fa-people-carry"></i>
-                            <span>توزيع المساعدات</span>
-                        </div>
-                        <div class="opportunity-item">
-                            <i class="fas fa-broom"></i>
-                            <span>حملات النظافة</span>
-                        </div>
-                        <div class="opportunity-item">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <span>التوعية المجتمعية</span>
-                        </div>
-                        <div class="opportunity-item">
-                            <i class="fas fa-child"></i>
-                            <span>أنشطة الأطفال</span>
-                        </div>
-                        <div class="opportunity-item">
-                            <i class="fas fa-laptop"></i>
-                            <span>الدعم الإداري</span>
-                        </div>
-                        <div class="opportunity-item">
-                            <i class="fas fa-first-aid"></i>
-                            <span>الإسعافات الأولية</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="volunteer-requirements">
-                    <h4><i class="fas fa-clipboard-check"></i> شروط التطوع</h4>
-                    <ul class="requirements-list">
-                        <li>العمر: 18 سنة فما فوق</li>
-                        <li>الالتزام بقيم وأخلاقيات الجمعية</li>
-                        <li>القدرة على العمل ضمن فريق</li>
-                        <li>الرغبة الحقيقية في خدمة المجتمع</li>
-                        <li>توفر وقت للتطوع (4 ساعات أسبوعياً على الأقل)</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="modal-actions">
-                <button class="modal-btn primary" onclick="window.open('https://forms.gle/volunteer-form', '_blank')">
-                    <i class="fas fa-file-signature"></i> تقديم طلب التطوع
-                </button>
-                <button class="modal-btn secondary" onclick="window.open('tel:+213551234567')">
-                    <i class="fas fa-phone"></i> استفسار هاتفي
-                </button>
-            </div>
-        </div>
-    </div>
+
 
     <!-- نافذة طلب المساعدة -->
     <div id="help-request-modal" class="modal">
@@ -4561,6 +4580,7 @@
                 <h3>روابط سريعة</h3>
                 <p><a href="#home" style="color: white;">الرئيسية</a></p>
                 <p><a href="#about" style="color: white;">من نحن</a></p>
+                <p><a href="#publication" style="color: white;">نداءات ومنشورات</a></p>
                 <p><a href="#activities" style="color: white;">الأنشطة</a></p>
                 <p><a href="#contact" style="color: white;">اتصل بنا</a></p>
                 <p><a href="https://imadtbn.github.io/dz_portal/" target="_blank" style="color: white;">
@@ -4570,7 +4590,11 @@
             <div class="footer-section">
                 <h3>تابعنا على</h3>
                 <p>
-                    <i class="fab fa-facebook" style="margin-left: 10px;"></i>
+                    <a href="https://www.facebook.com/bachair.elkhair.sidi.daoud?locale=ar_AR" target="_blank"
+                        aria-label="صفحة فيسبوك الجمعية"
+                        style="color: inherit; text-decoration: none; margin-left: 10px;">
+                        <i class="fab fa-facebook"></i>
+                    </a>
                     <i class="fab fa-instagram" style="margin-left: 10px;"></i>
                     <i class="fab fa-youtube" style="margin-left: 10px;"></i>
                 </p>
@@ -4631,19 +4655,7 @@
                 observer.observe(el);
             });
 
-            // أزرار التفاعل
-            document.querySelectorAll('.cta-button, .card-button').forEach(button => {
-                button.addEventListener('click', function () {
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
 
-                    if (this.classList.contains('cta-button')) {
-                        alert('مرحباً بك في جمعية بشائر الخير! سيتواصل معك مسؤول العضوية قريباً.');
-                    }
-                });
-            });
 
             // تأثيرات إضافية للبطاقات
             document.querySelectorAll('.card').forEach(card => {
@@ -5029,10 +5041,17 @@
                 }
             });
 
-            // زر طلب مساعدة - يفتح في متصفح خارجي
-            document.getElementById('helpBtn').addEventListener('click', function () {
-                window.open('https://forms.gle/help-request-form', '_blank');
+            // تفعيل الأزرار التي تحتوي على data-modal
+            document.querySelectorAll("[data-modal]").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const target = document.getElementById(btn.getAttribute("data-modal"));
+                    if (target) {
+                        target.classList.add("active");
+                        document.body.style.overflow = "hidden";
+                    }
+                });
             });
+
 
             // زر التبرعات - يفتح نافذة التبرعات
             document.getElementById('donateBtn').addEventListener('click', function () {
@@ -5063,7 +5082,6 @@
             });
         });
     </script>
-
 
     <!--  بيانات التبرعات -->
     <script>
